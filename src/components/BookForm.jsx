@@ -15,7 +15,8 @@ const BookForm = () => {
             author: {author},
         })
         .then(function(docRef){
-            console.log("document written with ID:", docRef.id);
+            console.log("document written with ID:", docRef.id);  
+             
         })
         .catch(function(error){
             console.error("Error adding document: ", error)
@@ -28,25 +29,13 @@ const BookForm = () => {
     
     return(
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="book title" value={title} onChange={(e)=> setTitle(e.target.value)} required />
-            <input type="text" placeholder="author name" value={author} onChange={(e)=> setAuthor(e.target.value)} required />
+            <input type="text" placeholder="Book title" value={title} onChange={(e)=> setTitle(e.target.value)} required />
+            <input type="text" placeholder="Author name" value={author} onChange={(e)=> setAuthor(e.target.value)} required />
             <input type="submit" value="Add Book" />
         </form>
     )
 }
 export default BookForm
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

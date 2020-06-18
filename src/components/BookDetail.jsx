@@ -1,55 +1,45 @@
-import React, {useContext} from 'react'
-import {BookContext} from '../contexts/BookContext'
-import firebase from '../config/fbConfig'
+// import React, {useContext, useState, useEffect} from 'react'
+// import {BookContext} from '../contexts/BookContext'
+// import firebase from '../config/fbConfig'
 
-const BookDetails = ({bookProp}) => {
-    const {actionDispatch} = useContext(BookContext)
 
-    const handleOnClick = () => {
+// const BookDetails = ({bookProp}) => {
+//     const {actionDispatch} = useContext(BookContext)
+//     // const [title, setTitle] = useState('')
+//     // const [author, setAuthor] = useState('')
 
-       // let bookTitle = "My Book";
-        var ref = firebase.firestore().ref('books/docs.id[0]');
-        ref.on('id', function(snapshot){
-            var deletedId = snapshot.val();
-            console.log(deletedId);
-        })
-        
+//     // useEffect(async()=>{
+//     //     const snapshot = await firebase.firestore().collection('books').get();
+//     //     snapshot.forEach(doc => {
+//     //       setTitle(doc.data().title)
+//     //       setAuthor(doc.data().author)
+//     //     })
+//     // }, [])
 
-        // firebase.firestore().collection("books").where("title", "==", bookTitle).get()
-        // .then(querySnapshot => {
-        //     querySnapshot.docs[0].ref.delete();
-        // });
-
-        //let docRef = firebase.firestore().collection('books').documentReference.get()
-        // firebase.firestore().collection('books').doc(docRef).delete()
-        // .then(()=>{console.log("succefully deleted!")})
-        // .catch((error)=>{ console.log("Error removing document:", error)})
-        
-        //console.log(docRef)
-        
-        actionDispatch({type: "REMOVE_BOOK", id: bookProp.id})
-        
-    }
+//     // const handleOnClick = () => {
+//     //     const db = firebase.firestore()
+//     //     db.collection('books').get().then(snapshot => {
+//     //         snapshot.docs.forEach(doc => {
+//     //             const id = doc.id 
+//     //             db.collection('books').doc(id).delete() 
+//     //             console.log("ID:", id)
+//     //         }) 
+//     //     })    
+//     //     actionDispatch({type: "REMOVE_BOOK", id: bookProp.id})
+//     // }
     
-    return(
-        <div>
-            {
-                <li onClick={handleOnClick} >
-                    <div className="title">{bookProp.title}</div>
-                    <div className="author">{bookProp.author}</div>
-                </li>
-            }
-        </div>
-    )
-    }
-
-export default BookDetails
-
-
-
-
-
-
+//     return(
+//         <div>
+//             {
+//                 <li>
+//                     <div className="title">{bookProp.title}</div>
+//                     <div className="author">{bookProp.author}</div>
+//                 </li>
+//             }
+//         </div>
+//     )
+// }
+// export default BookDetails
 
 
 

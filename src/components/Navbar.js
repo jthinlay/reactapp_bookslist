@@ -1,13 +1,26 @@
-import React, {useContext} from 'react'
-import {BookContext} from '../contexts/BookContext'
+import React, {useState, useEffect} from 'react'
 import BookForm from './BookForm'
+import firebase from '../config/fbConfig'
+
+const useBooks = () => {
+    const [books, setBooks] = useState([])
+     useEffect(() => {
+        firebase.firestore().collection('books').onSnapshot((snapshot) => {
+            const newBooks =  snapshot.docs.map(doc => ({
+                ...doc.data()
+              }))
+            setBooks(newBooks)
+        })
+    },[])
+    return books
+}
 
 const Navbar = () => {
-    const {bookState} = useContext(BookContext)
+   const books = useBooks()
     return(
         <div className="navbar">
             <h1>JT Reading Materials List</h1>
-            <p>Currently has {bookState.length} reading material left</p>
+            <p>Currently has {books.length} reading material left</p>
             <BookForm />
         </div>
     )
