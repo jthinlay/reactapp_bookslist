@@ -3,9 +3,10 @@ import BookForm from './BookForm'
 import firebase from '../config/fbConfig'
 
 const useBooks = () => {
+    const db = firebase.firestore()
     const [books, setBooks] = useState([])
      useEffect(() => {
-        firebase.firestore().collection('books').onSnapshot((snapshot) => {
+        db.collection('books').onSnapshot((snapshot) => {
             const newBooks =  snapshot.docs.map(doc => ({
                 ...doc.data()
               }))
